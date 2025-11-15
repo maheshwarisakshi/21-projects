@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tourism website</title>
+    <link rel="stylesheet" href="style.css"/>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+</head>
+<body>
+    <header role="banner">
+        <div class="container">
+            <nav role="navigation" aria-label="main navigation">
+            <h1> ExploreWorld </h1>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#destinations">Destination</a></li>
+                <li><a href="#packages">Packages</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#booking">Book Now</a></li>
+            </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" role="region" aria-label="home section">
+        <video class="bg-video" src="https://www.pexels.com/download/video/4125025/" autoplay loop muted playsinline></video>
+        <div class="overlay"></div>
+        <div class="home-content">
+            <h2>Discover Your Next Adventure</h2>
+            <p>From tropical escapes to cultural wonders — explore destinations that inspire and experiences you’ll never forget.</p>
+            <a href="#packages" class="btn" aria-label="Packages">Explore Packagess</a>
+        </div>
+    </section> 
+
+    <section id="destinations" class="section" role="region"   aria-label="destination-section">
+    <div class="container">
+        <h2 id="destinations-heading">Popular Destinations</h2>
+        <div class="destination-grid">
+            <article class="destination-class">
+                <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=738" alt="Bali"/>
+                <h3> Bali, Indonesia</h3>
+            </article>
+            <article class="destination-class">
+                <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=800&q=80" alt="Santorini"/>
+                <h3> Santorini, Greece</h3>
+            </article>
+            <article class="destination-class">
+                <img src="https://images.unsplash.com/photo-1708342858256-4a27f1d0aaee?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=687" alt="Kyoto, Japan" alt="Japan"/>
+                <h3> Kyoto, Japan</h3>
+            </article>
+            <article class="destination-class">
+                <img src="https://images.unsplash.com/photo-1634007626524-f47fa37810a7?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=687" alt="Dubai"/>
+                <h3> Dubai, UAE</h3>
+            </article>
+        </div>
+    </div>
+    </section>
+    <section id="packages" class="section" role="region"   aria-label="destination-section">
+        <div class="container">
+            <h2 id="packages-heading">Our Packages</h2>
+            <div class="destination-grid" role="listitem">
+            <article class="package" role="listitem">
+                <img src="https://images.unsplash.com/photo-1577949269674-517f978815cf?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fEJhbGklMjBCZWFjaHxlbnwwfHwwfHx8Mg%3D%3D&auto=format&fit=crop&q=60&w=1000" alt="Travel package"/>
+                <h3> Bali Beach Escape</h3>
+               <p>7 days | Starting from $899</p> 
+               <button aria-label="Book Bali Beach Escape">Book Now</button>
+            </article>
+            <article class="package" role="listitem">
+                <img src="https://images.unsplash.com/photo-1669296584992-a636cb1d6376?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHRva3lvJTIwY3VsdHVyYWwlMjB0b3VyfGVufDB8fDB8fHwy&auto=format&fit=crop&q=60&w=1000" alt="Travel package"/>
+                <h3> Tokyo Cultural Tour</h3>
+               <p>8 days | Starting from $1100</p> 
+               <button aria-label="Book Tokyo Cultural Tour">Book Now</button>
+            </article>
+            <article class="package" role="listitem">
+                <img src="https://images.unsplash.com/photo-1724412575318-d07a964e27a3?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=687" alt="Travel package"/>
+                <h3> Greek Island Adventure</h3>
+               <p>10 days | Starting from $1250</p> 
+               <button aria-label="Book Greek Island Adventure">Book Now</button>
+            </article>
+            <article class="package" role="listitem">
+                <img src="https://images.unsplash.com/photo-1626227187853-6e334338e437?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=735" alt="Travel package"/>
+                <h3> Dubai Luxury Experience </h3>
+               <p>5 days | Starting from $980</p> 
+               <button aria-label="Book Dubai Luxury Experience">Book Now</button>
+            </article>
+        </div>
+        </div>
+    </section>
+    <section id="testimonials" class="section" role="region" aria-label="testimonials section">
+    <div class="container">
+        <h2 id="testimonials-heading">What Our Travelers Say</h2>
+        <div class="testimonials-grid" role="list">
+            <blockquote class="testimonial">
+                <i class="fa-solid fa-quote-left fa-2x"></i>
+                <p>
+                    “My trip to Santorini was absolutely magical. The sunsets, food, and cruise tours were amazing. ExploreWorld made everything smooth and hassle-free. Totally worth it!”
+                </p>
+                <h4> - Rohan Mehta</h4>
+            </blockquote>
+            <blockquote class="testimonial">
+                <i class="fa-solid fa-quote-left fa-2x"></i>
+                <p>
+                    “Japan has always been on my bucket list, and this tour made it unforgettable. The cultural tours, cherry blossom views, and local food experiences were top-notch.”
+                <h4> - Neha Kapoor</h4>
+            </blockquote>
+            <blockquote class="testimonial">
+                <i class="fa-solid fa-quote-left fa-2x"></i>
+                <p>
+                    “Dubai Luxury Experience was one of the best vacations I’ve ever had. The desert safari and luxury hotel stay were simply incredible. Highly recommended!”
+                </p>
+                <h4> - Arjun Patel</h4>
+            </blockquote>
+            <!--<blockquote class="testimonial">
+                <i class="fa-solid fa-quote-left fa-2x"></i>
+                <p>
+                    “The Bali package was beyond my expectations! Everything was perfectly planned — from airport pickups to beach activities. I didn’t have to worry about a thing, just enjoyed every moment.”
+                </p>
+                <h4> - Aditi Sharma</h4>
+            </blockquote>-->
+        </div>
+    </div>
+    </section>
+
+    <section id="booking" role="form" aria-label="booking section">
+        <div class="container">
+            <h2 id="booking-heading"></h2>
+        </div>
+    </section>
+
+    <section id="booking" role="form" aria-label="booking section">
+      <div class="container">
+        <h2 id="bookng-heading">Book Your Travel</h2>
+        <p id="booking-desc">
+          Explore breathtaking destinations around the world and create memories
+        </p>
+
+        <form aria-label="booking-form" method="post">
+          <label for="fullname">First Name</label>
+          <input
+            type="text"
+            name="fname"
+            id="fullname"
+            required
+            placeholder="Enter your first name"
+          />
+          <label for="fullname">Last Name</label>
+          <input
+            type="text"
+            name="fname"
+            id="fullname"
+            required
+            placeholder="Enter your last name"
+          />
+          <label for="destination">Destinations</label>
+          <select name="destination" id="destination" >
+            <option value="">Paris</option>
+            <option value="">Bali</option>
+            <option value="">New York</option>
+          </select>
+
+          <label for="message or feedback">Message or Feedback</label>
+          <textarea
+            name="feedback"
+            id="message"
+            placeholder="Enter your special requirement"
+          ></textarea>
+          <button type="submit">Book Now</button>
+        </form>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+  <div class="container footer-grid">
+    <!-- Brand and Map -->
+    <div class="footer-col map-col">
+      <h2>Find Us</h2>
+      <iframe 
+        title="ExploreWorld Office Location" 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.019835235083!2d-122.41941538468187!3d37.77492977975932!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858064d9d7b8a3%3A0x47fca1f7b3b9b0e!2sTravel%20Agency!5e0!3m2!1sen!2sin!4v1680000000000" 
+        allowfullscreen 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+
+    <div class="footer-col">
+      <h3>About</h3>
+      <ul>
+        <li><a href="#about-us">About Us</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#blog">News &amp; Blog</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h3>Company</h3>
+      <ul>
+        <li><a href="#faqs">FAQs</a></li>
+        <li><a href="#history">History</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h3>Support</h3>
+      <ul>
+        <li><a href="#privacy">Privacy Policy</a></li>
+        <li><a href="#terms">Terms &amp; Services</a></li>
+        <li><a href="#payments">Payments</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+
+</body>
+</html>
