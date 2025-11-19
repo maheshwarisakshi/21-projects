@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+    <style>
+
+    :root {
+        --sidebar-width: 220px;
+        --sidebar-bg: #ffffff;
+        --sidebar-border-color: #e5e7eb;
+        --primary-blue: #0d6efd;
+      }
+      body {
+        background: #f8f9fa;
+      }
+      .layout-wrapper {
+        display: flex;
+      }
+      .sidebar {
+        width: var(--sidebar-width);
+        min-height: 100vh;
+        background: var(--sidebar-bg);
+        border-right: 1px solid var(--sidebar-border-color);
+        transition: transform 0.3s ease-in-out;
+      }
+      .sidebar .nav-link {
+        color: #344767;
+        font-weight: 500;
+        padding: 0.8rem 1.2rem;
+        border-radius: 0.375rem;
+      }
+      .sidebar .nav-link i {
+        color: var(--primary-blue);
+      }
+      .sidebar .nav-link.active {
+        background: rgba(13, 110, 253, 0.1);
+        color: var(--primary-blue);
+      }
+      .sidebar .nav-link:hover {
+        background: rgba(13, 110, 253, 0.05);
+      }
+      .main-content {
+        flex: 1 1 auto;
+        margin-left: 0;
+        padding: 1.5rem;
+        transition: padding-left 0.3s ease-in-out;
+      }
+      .topbar {
+        background: #fff;
+        border-bottom: 1px solid var(--sidebar-border-color);
+        padding: 1rem 1.5rem;
+        position: sticky;
+        top: 0;
+        z-index: 1020;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+            .kpi-card {
+        border-radius: 12px;
+        box-shadow: 0 6px 18px rgba(15, 23, 36, 0.06);
+      }
+      .avatar-sm {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+      @media (max-width: 991px) {
+        .sidebar {
+          position: fixed;
+          z-index: 1030;
+          transform: translateX(-100%);
+        }
+        .sidebar.show {
+          transform: translateX(0);
+        }
+        .main-content {
+          padding-left: 0;
+        }
+        }
+        .profile-card { 
+        border-radius: 12px; 
+        box-shadow: 0 8px 30px rgba(15,23,36,0.06); 
+        background: #fff; 
+        }
+        .profile-avatar { 
+        width:72px; 
+        height:72px; 
+        border-radius:50%; 
+        object-fit:cover; 
+        border:4px solid #fff; 
+        box-shadow:0 6px 18px rgba(15,23,36,0.06);
+        }
+        .input-soft {
+        background: #fbfbfd;
+        border: 1px solid #f0f0f3;
+        border-radius: 8px;
+        padding: 0.6rem 0.8rem;
+        }
+        .progress { 
+        background: #f1f3f5; 
+        border-radius: 8px; 
+        }
+        .progress .progress-bar { 
+        border-radius: 8px;
+        }
+        .card-body { 
+        padding: 1.25rem;
+        }
+        h4 { 
+        font-weight:600; 
+        color:#111827; 
+        }
+        small.text-muted { 
+        color:#6b7280; 
+        }
+        .row.g-3 { 
+        row-gap:1rem; 
+        }
+
+
+
+      </style>
+
+</head>
+<body>
+    <div class="layout-wrapper">
+    <aside class="sidebar p-3 d-flex flex-column flex-shrink-0">
+        <div class="d-flex align-items-center mb-4 ps-2">
+          <i class="fa-solid fa-robot fa-2x me-2 text-primary"></i>
+          <div>
+            <h6 class="mb-0 fw-bold">Resource Manager</h6>
+            <small class="text-muted">Management Suite</small>
+          </div>
+        </div>
+
+        <nav class="nav flex-column mb-auto">
+          <a class="nav-link active" href="#"
+            ><i class="fa-solid fa-gauge-high me-3"></i>Dashboard</a
+          >
+          <a class="nav-link" href="#allocations"
+            ><i class="fa-solid fa-diagram-project me-3"></i>Allocations</a
+          >
+          <a class="nav-link" href="#teams"
+            ><i class="fa-solid fa-users me-3"></i>Teams</a
+          >
+          <a class="nav-link" href="#projects"
+            ><i class="fa-solid fa-briefcase me-3"></i>Projects</a
+          >
+          <a class="nav-link" href="#reports"
+            ><i class="fa-solid fa-file-lines me-3"></i>Reports</a
+          >
+          <a class="nav-link" href="#contact"
+            ><i class="fa-solid fa-envelope me-3"></i>Contact</a
+          >
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Topbar -->
+        <header
+          class="topbar d-flex align-items-center justify-content-between">
+          <div class="d-flex align-items-center gap-3">
+            <button class="btn btn-light d-lg-none" id="toggleSidebar">
+              <i class="fa-solid fa-bars"></i>
+            </button>
+            <h4 class="mb-0 d-none d-md-block">Dashboard</h4>
+          </div>
+
+          <div class="d-flex align-items-center gap-3">
+            <div class="input-group" style="min-width: 300px">
+              <span class="input-group-text"
+                ><i class="fa-solid fa-magnifying-glass"></i
+              ></span>
+              <input
+                class="form-control"
+                placeholder="Search project, team or resource..."
+              />
+            </div>
+            <button class="btn btn-outline-secondary position-relative">
+              <i class="fa-regular fa-bell"></i>
+              <span
+                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+              >
+                3
+              </span>
+            </button>
+            <div class="dropdown">
+              <a
+                href="#"
+                class="d-flex align-items-center text-decoration-none"
+                data-bs-toggle="dropdown"
+              >
+                <img
+                  src="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg"
+                  class="avatar-sm me-2"
+                />
+                <div class="d-none d-sm-block">
+                  <div class="fw-bold">Robin</div>
+                  <small class="text-muted">Lead Engineer</small>
+                </div>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="#">Sign out</a></li>
+              </ul>
+            </div>
+          </div>
+        </header>
+
+         <main class="p-4">
+            <!-- Profile content will go here -->
+             <section class="card profile-card p-0">
+                <div class="card-body p-4">
+                <div class="row alighn-items-center">
+                    <div class="col-md-8 d-flex align-items-center gap-3">
+                    <img
+                  src="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg"
+                  class="avatar-sm me-2"/>
+                        <h4 class="mb-0">Robin</h4>
+                    </div>
+                    <div class="col-md-4 text-md-end">
+                        <button class="btn btn-primary btn-sm">
+                            Edit
+                        </button>
+                        <a href="index.html" class="btn btn-outline-primary">Back to Dashboard</a>
+
+                    </div>
+                </div>
+                <form class="mt-4">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                        <label class="form-label">First Name</label>
+                        <input class="form-control input-soft" placeholder="Robin">
+                        </div>
+                        <div class="col-md-6">
+                        <label class="form-label">Last Name</label>
+                        <input class="form-control input-soft" placeholder="Walker">
+                        </div>
+                        <div class="col-md-6">
+                        <label class="form-label">Email</label>
+                        <input class="form-control input-soft" placeholder="robinwalker@gmail.com">
+                        </div>
+                        <div class="col-md-6">
+                        <label class="form-label">Phone</label>
+                        <input class="form-control input-soft" placeholder="+91 9876543210">
+                        </div>
+                        <div class="col-md-6">
+                        <label class="form-label">Gender</label>
+                        <select class="form-select input-soft">
+                        <option value="">Select gender</option>
+                        <option value="male" selected>Male</option>
+                        <option value="female">Female</option>
+                        <option value="Other">Other</option>
+                        </select>
+                        </div>
+                        <div class="col-md-6">
+                        <label class="form-label">Country</label>
+                        <select class="form-select input-soft">
+                        <option value="">Select country</option>
+                        <option value="india">India</option>
+                        <option value="usa" selected>USA</option>
+                        <option value="uk">UK</option>
+                        </select>
+                        </div>
+                        <div class="col-md-6">
+                        <label class="form-label">Select Role</label>
+                        <input class="form-control input-soft" placeholder="Lead Engineer">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            </section>
+            <section class="mt-4">
+                <h6 class="mb-3">Current Assignments</h6>
+
+                <article class="mb-3">
+                    <div class="d-flex justify-content-between align-items-start mb-1">
+                    <div>
+                    <div class="fw-semibold">Payments Revamp</div>
+                    <div class="small text-muted">Team: Backend</div>
+                    </div>
+                    <div class="small text-muted">80%</div>
+                    </div>
+                    <div class="progress" style="height:8px">
+                    <div class="progress-bar" style="width:80%"></div>
+                    </div>
+                </article>
+                <article class="mb-3">
+                    <div class="d-flex justify-content-between align-items-start mb-1">
+                    <div>
+                    <div class="fw-semibold">AI Insights Dashboard</div>
+                    <div class="small text-muted">Team: Data Science</div>
+                    </div>
+                    <div class="small text-muted">65%</div>
+                    </div>
+                    <div class="progress" style="height:8px">
+                    <div class="progress-bar" style="width:65%"></div>
+                    </div>
+                </article>
+</section>
+             
+
+        </main>
+    </div>
+        <!-- Bootstrap Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>    
+</body>
+</html>
