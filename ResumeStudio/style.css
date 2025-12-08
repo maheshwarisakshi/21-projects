@@ -1,0 +1,205 @@
+:root {
+  /* --- UI COLORS --- */
+  --primary: #4f46e5;       /* Indigo */
+  --bg-body: #f8fafc;       /* Light Slate */
+  --bg-surface: #ffffff;    /* White */
+  --text-main: #0f172a;     /* Dark Slate */
+  --text-muted: #64748b;    /* Grey */
+  --border-color: #e2e8f0;
+
+  /* --- PRINT COLORS (Locked) --- */
+  --ink-primary: #0d6efd;   /* Script Blue (Kept for skills/accents if needed) */
+  --ink-text: #000000;      /* Black */
+  --ink-muted: #6c757d;     /* Grey */
+  --paper-white: #ffffff;   /* White */
+  --card-bg: #f8f9fa;       /* Light Grey for Resume Cards */
+}
+
+/* Base Reset */
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-body);
+  color: var(--text-main);
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* === 1. TOP BANNER === */
+.frosted-header {
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  color: white;
+  padding: 1.25rem 2rem;
+  flex-shrink: 0;
+  box-shadow: 0 4px 20px rgba(79, 70, 229, 0.25);
+  z-index: 20;
+}
+
+.glass-stat {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  padding: 0.6rem 1.25rem;
+  border-radius: 12px;
+  min-width: 100px;
+  text-align: center;
+}
+.glass-stat small {
+  display: block; text-transform: uppercase; font-size: 0.65rem;
+  letter-spacing: 0.05em; opacity: 0.9; margin-bottom: 0.15rem; color: rgba(255, 255, 255, 0.9);
+}
+.glass-stat span { font-size: 1.25rem; font-weight: 700; color: white; }
+
+.btn-glass {
+  background: rgba(255, 255, 255, 0.2); border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white; font-size: 0.85rem; font-weight: 500; backdrop-filter: blur(5px); transition: all 0.2s;
+}
+.btn-glass:hover { background: rgba(255, 255, 255, 0.3); color: white; }
+
+/* === 2. LAYOUT === */
+.app-container { display: flex; flex: 1; overflow: hidden; }
+
+.sidebar {
+  width: 260px; background: var(--bg-surface); border-right: 1px solid var(--border-color);
+  display: flex; flex-direction: column; padding: 1.5rem; overflow-y: auto;
+}
+
+.section-nav button {
+  width: 100%; text-align: left; padding: 0.75rem 1rem; margin-bottom: 0.5rem;
+  border-radius: 8px; border: 1px solid transparent; background: transparent;
+  color: var(--text-muted); font-weight: 500; display: flex; justify-content: space-between;
+  align-items: center; transition: all 0.2s;
+}
+.section-nav button:hover { background: #f1f5f9; color: var(--primary); }
+.section-nav button.active { background: #eef2ff; color: var(--primary); border-color: #c7d2fe; }
+.section-nav button.is-complete::after { content: "✓"; color: #10b981; }
+
+.main-content { flex: 1; display: grid; grid-template-columns: 1fr 1fr; }
+
+.editor-pane {
+  padding: 2.5rem; overflow-y: auto; border-right: 1px solid var(--border-color); background: var(--bg-surface);
+}
+
+.preview-pane {
+  padding: 2.5rem; overflow-y: auto; background: #cbd5e1;
+  display: flex; flex-direction: column; align-items: center;
+}
+
+/* === 3. RESUME PAPER ISOLATION === */
+.resume-preview {
+  background: var(--paper-white) !important;
+  width: 100%; max-width: 210mm; min-height: 297mm;
+  padding: 3rem; margin-bottom: 2rem;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.15);
+  
+  /* FORCE Light Mode Variables inside paper */
+  --text-main: var(--ink-text);
+  --text-muted: var(--ink-muted);
+  --primary: var(--ink-text); /* CHANGED: Primary color inside resume is now BLACK */
+  color: var(--ink-text) !important;
+}
+
+/* 3A. Ensure Resume Boxes stay Light Grey */
+.resume-preview .bg-light, 
+.resume-preview .export-card {
+  background-color: var(--card-bg) !important;
+  border: 1px solid #e9ecef !important;
+  color: var(--ink-text) !important;
+}
+
+/* 3B. Force Headings to be BLACK (The Fix) */
+.resume-preview h1, .resume-preview h2, .resume-preview h3 {
+  color: var(--ink-text) !important; /* Forces Black */
+  border-bottom-color: #e9ecef !important;
+}
+
+/* Force Body Text to be Black */
+.resume-preview p, .resume-preview li, .resume-preview span {
+  color: var(--ink-text) !important;
+}
+.resume-preview .text-muted {
+  color: var(--ink-muted) !important;
+}
+.resume-preview .badge-skill {
+  background-color: rgba(13, 110, 253, 0.12) !important;
+  color: #0d6efd !important;
+}
+
+/* === 4. FORMS === */
+.form-label { font-size: 0.75rem; letter-spacing: 0.05em; font-weight: 700; color: var(--text-muted); }
+
+.form-control, .form-select {
+  border-radius: 8px; padding: 0.6rem 1rem;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-surface);
+  color: var(--text-main);
+}
+.form-control:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1); }
+
+/* === 5. DARK MODE CONFIG === */
+body[data-mode="dark"] {
+  --bg-body: #0f172a;
+  --bg-surface: #1e293b;
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --border-color: #334155;
+  --primary: #818cf8;
+}
+
+body[data-mode="dark"] .sidebar { border-right-color: #334155; }
+body[data-mode="dark"] .section-nav button:hover { background: #334155; color: #fff; }
+body[data-mode="dark"] .section-nav button.active { background: rgba(79, 70, 229, 0.2); color: #818cf8; border-color: #4f46e5; }
+
+/* === 6. THE FIX: SCOPED DARK BOXES & PLACEHOLDERS === */
+
+/* Step A: Turn .bg-light Dark ONLY inside the Editor */
+body[data-mode="dark"] .editor-pane .bg-light {
+  background-color: #0f172a !important; 
+  border-color: #334155 !important;
+  color: #ffffff !important;
+}
+
+/* Step B: Fix Labels inside the Dark Editor Box */
+body[data-mode="dark"] .editor-pane .bg-light .form-label,
+body[data-mode="dark"] .editor-pane .bg-light .text-muted,
+body[data-mode="dark"] .editor-pane .bg-light label {
+  color: #cbd5e1 !important; 
+}
+
+/* Step C: Fix Inputs inside the Dark Editor Box */
+body[data-mode="dark"] .editor-pane .bg-light .form-control,
+body[data-mode="dark"] .editor-pane .bg-light input, 
+body[data-mode="dark"] .editor-pane .bg-light textarea {
+  background-color: #1e293b !important; 
+  border-color: #475569 !important;
+  color: #ffffff !important;
+}
+
+/* Step D: Fix Global Inputs in Editor */
+body[data-mode="dark"] .form-control,
+body[data-mode="dark"] .form-select {
+  background-color: #0f172a !important;
+  border-color: #334155 !important;
+  color: #ffffff !important;
+}
+
+/* Step E: FIX PLACEHOLDER VISIBILITY */
+body[data-mode="dark"] .form-control::placeholder {
+  color: #94a3b8 !important; /* Visible Light Grey */
+  opacity: 1;
+}
+
+body[data-mode="dark"] .editor-pane .bg-light .form-control::placeholder {
+  color: #cbd5e1 !important; /* Even lighter grey for inside the dark box */
+  opacity: 0.7;
+}
+
+@media (max-width: 1000px) {
+  .main-content { grid-template-columns: 1fr; display: block; overflow-y: auto; }
+  .preview-pane { border-top: 1px solid var(--border-color); min-height: 800px; }
+  .sidebar { width: 200px; }
+}
+
